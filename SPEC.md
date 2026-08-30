@@ -229,10 +229,16 @@ survives.
   name collisions, a deleted Library folder, cross-volume copies — is where the
   real failures live, and asserting it only through the Store would have tested
   it less honestly. The Store tests still drive it end to end.
-- **Story 60 is partly met.** `scripts/release.sh` makes a release one command,
-  but publishing is still a handful of printed steps rather than something a
-  tag push does on its own. Closing it fully means a CI workflow holding the
-  EdDSA signing key as a secret; that is not built.
+- **Story 60 is met on demand, not by tagging.** The story asked to "publish a
+  release by tagging and pushing". `.github/workflows/release.yml` instead runs
+  only from the Actions tab: it tests, builds, signs, creates the tag and
+  release and commits the appcast. Deliberate — a release should be something a
+  person asks for, not a side effect of a tag. `scripts/release.sh` still
+  builds and signs locally without publishing anything.
+  The signing key reaches CI either as a repository secret or pasted per run.
+  Pasting is offered because it keeps the key in a password safe rather than in
+  GitHub, but a manual run's inputs live in the run's event payload, and this
+  repository is public — so a pasted key must be treated as disclosed.
 - **`AppModel.startupWarning` is not in any story.** It opens the window with a
   visible warning when the on-disk store cannot be opened, instead of refusing
   to launch on her machine with no explanation.

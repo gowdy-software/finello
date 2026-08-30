@@ -4,13 +4,19 @@
 set -euo pipefail
 
 find_sparkle_bin() {
-    local found
-    found=$(find "$HOME/Library/Developer/Xcode/DerivedData"/finello-*/SourcePackages/artifacts/sparkle/Sparkle/bin \
-        -maxdepth 1 -type d 2>/dev/null | head -1)
-    if [ -z "$found" ]; then
-        echo "Sparkle's tools are not resolved yet. Build the app once first:" >&2
-        echo "  xcodebuild -project finello.xcodeproj -scheme finello build" >&2
-        return 1
-    fi
-    echo "$found"
+    local candidate
+    # CI builds into ./build; a local Xcode build resolves into DerivedData.
+    for candidate in \
+        "./build/SourcePackages/artifacts/sparkle/Sparkle/bin" \
+        "$HOME/Library/Developer/Xcode/DerivedData"/finello-*/SourcePackages/artifacts/sparkle/Sparkle/bin
+    do
+        if [ -d "$candidate" ]; then
+            echo "$candidate"
+            return 0
+        fi
+    done
+
+    echo "Sparkle's tools are not resolved yet. Build the app once first:" >&2
+    echo "  xcodebuild -project finello.xcodeproj -scheme finello build" >&2
+    return 1
 }

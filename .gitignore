@@ -21,6 +21,7 @@ xcuserdata/
 # It lives in the login keychain; only the public key ships in Info.plist.
 *.private-key
 sparkle_private_key*
+sparkle-private-key.txt
 
 # Release artifacts
 dist/

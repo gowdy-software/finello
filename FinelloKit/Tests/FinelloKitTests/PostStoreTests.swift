@@ -641,3 +641,35 @@ struct UndoTests {
         #expect(post.day == f.date(2026, 9, 7))
     }
 }
+
+@Suite("Opening the store on disk")
+@MainActor
+struct StoreBootstrapTests {
+
+    @Test("creates its directory on a first run")
+    func createsMissingDirectory() throws {
+        let temp = TempDirectory()
+        // Nothing along this path exists yet — exactly a fresh Mac.
+        let store = temp.url
+            .appendingPathComponent("Application Support", isDirectory: true)
+            .appendingPathComponent("finello", isDirectory: true)
+            .appendingPathComponent("finello.store")
+
+        _ = try PostStore.container(at: store)
+
+        #expect(FileManager.default.fileExists(
+            atPath: store.deletingLastPathComponent().path(percentEncoded: false)
+        ))
+    }
+
+    @Test("a fresh store opens with no Posts in it")
+    func freshStoreIsEmpty() throws {
+        let temp = TempDirectory()
+        let root = temp.url.appendingPathComponent("finello", isDirectory: true)
+        let store = PostStore(
+            container: try PostStore.container(at: root.appendingPathComponent("finello.store")),
+            library: MediaLibrary(root: root.appendingPathComponent("Library", isDirectory: true))
+        )
+        #expect(try store.allPosts().isEmpty)
+    }
+}

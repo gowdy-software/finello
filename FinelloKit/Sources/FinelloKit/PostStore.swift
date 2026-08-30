@@ -41,7 +41,14 @@ public final class PostStore {
     }
 
     public static func container(at url: URL) throws -> ModelContainer {
-        try ModelContainer(
+        // SwiftData will not create the directory it is asked to store in, and
+        // on a first run it does not exist. Without this the store opens only
+        // after a retry, having logged a wall of CoreData errors — and one
+        // failed retry means she loses the session.
+        try FileManager.default.createDirectory(
+            at: url.deletingLastPathComponent(), withIntermediateDirectories: true
+        )
+        return try ModelContainer(
             for: Post.self, Variant.self, MediaItem.self,
             configurations: ModelConfiguration(url: url)
         )

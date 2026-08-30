@@ -52,7 +52,12 @@ fi
 
 echo "==> Signing the update"
 BIN=$(find_sparkle_bin)
-"$BIN/generate_appcast" dist/
+# The archive lives on the GitHub release, not next to the appcast. Without
+# this prefix Sparkle derives the download URL from the feed's own directory
+# and every update 404s.
+"$BIN/generate_appcast" \
+    --download-url-prefix "https://github.com/gowdy-software/finello/releases/download/v$VERSION/" \
+    dist/
 
 echo
 echo "Built dist/finello-$VERSION.zip and updated dist/appcast.xml"

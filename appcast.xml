@@ -3,10 +3,10 @@
     <channel>
         <title>finello</title>
         <item>
-            <title>0.1.0</title>
-            <pubDate>Sun, 30 Aug 2026 23:03:28 +0000</pubDate>
-            <sparkle:version>11</sparkle:version>
-            <sparkle:shortVersionString>0.1.0</sparkle:shortVersionString>
+            <title>0.1.1</title>
+            <pubDate>Sun, 30 Aug 2026 23:20:17 +0000</pubDate>
+            <sparkle:version>13</sparkle:version>
+            <sparkle:shortVersionString>0.1.1</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
             <description><![CDATA[<h2>Welcome to finello</h2>
 
@@ -60,8 +60,16 @@
   Your media lives in finello's own library. You can always find it at
   <em>File ▸ Reveal Library in Finder</em>.
 </p>
+
+<h3>Fixed in 0.1.1</h3>
+<ul>
+  <li>
+    finello now sets up its library cleanly the very first time it opens,
+    instead of having to retry.
+  </li>
+</ul>
 ]]></description>
-            <enclosure url="https://github.com/gowdy-software/finello/releases/download/v0.1.0/finello-0.1.0.zip" length="8334146" type="application/octet-stream" sparkle:edSignature="Sk1RvX13zlM6OTArrPKb1265AUvwsLUBf47exCRNG47u3/V+vd0E3zPUt/FOGWFo4xn38Lx8YZO1DtjmFgnFCw=="/>
+            <enclosure url="https://github.com/gowdy-software/finello/releases/download/v0.1.1/finello-0.1.1.zip" length="8334516" type="application/octet-stream" sparkle:edSignature="bcR2EWMNRFYiS96iiVUXpNE8GarMvU8p8nX5u0rNtsDagy4Q0Wz6NjnteqqgP2uMvEsux/y4JPMXnQ4oNNGFDA=="/>
         </item>
     </channel>
 </rss>

@@ -28,12 +28,12 @@
 	<true/>
 	<key>NSSupportsSuddenTermination</key>
 	<true/>
-	<key>SUFeedURL</key>
-	<string>https://raw.githubusercontent.com/gowdy/finello/main/appcast.xml</string>
-	<key>SUPublicEDKey</key>
-	<string>qZBmhO08m7DYrazfxFMT3u+D/xWS/2/OnB4LvHIQUcA=</string>
 	<key>SUEnableAutomaticChecks</key>
 	<true/>
+	<key>SUFeedURL</key>
+	<string>https://raw.githubusercontent.com/gowdy-software/finello/main/appcast.xml</string>
+	<key>SUPublicEDKey</key>
+	<string>qZBmhO08m7DYrazfxFMT3u+D/xWS/2/OnB4LvHIQUcA=</string>
 	<key>SUScheduledCheckInterval</key>
 	<integer>86400</integer>
 </dict>

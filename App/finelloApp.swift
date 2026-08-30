@@ -26,6 +26,12 @@ struct FinelloApp: App {
             CommandGroup(after: .newItem) {
                 Button("New Post Today") { app.createPost(on: app.today) }
                     .keyboardShortcut("n", modifiers: .command)
+                Divider()
+                // Her media lives here, and she should never have to be told a
+                // path to find it.
+                Button("Reveal Library in Finder") {
+                    NSWorkspace.shared.activateFileViewerSelecting([app.store.library.root])
+                }
             }
             CommandGroup(after: .toolbar) {
                 Picker("View", selection: Binding(get: { app.mode }, set: { app.mode = $0 })) {
@@ -37,10 +43,6 @@ struct FinelloApp: App {
                     .keyboardShortcut(.leftArrow, modifiers: .command)
                 Button("Next") { app.step(1) }
                     .keyboardShortcut(.rightArrow, modifiers: .command)
-                Divider()
-                Button("Reveal Library in Finder") {
-                    NSWorkspace.shared.activateFileViewerSelecting([app.store.library.root])
-                }
             }
             CommandGroup(after: .appInfo) {
                 Button("Check for Updates…") { app.updates.checkForUpdates() }

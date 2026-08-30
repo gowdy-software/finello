@@ -73,7 +73,7 @@ fi
 echo
 echo "Built dist/finello-$VERSION.zip and updated dist/appcast.xml"
 echo
-echo "To publish by hand (CI does this for you on a tag push):"
+echo "To publish by hand (or use Actions -> Release -> Run workflow):"
 echo "  cp dist/appcast.xml appcast.xml"
 echo "  git add appcast.xml && git commit -m \"Publish appcast for $VERSION\""
 echo "  git tag v$VERSION && git push && git push --tags"

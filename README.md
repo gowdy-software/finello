@@ -8,6 +8,7 @@ hand, tick it off. finello never talks to a social network — see
 
 - **Vocabulary**: [CONTEXT.md](CONTEXT.md) — read this first.
 - **Decisions**: [docs/adr/](docs/adr/)
+- **Spec**: [SPEC.md](SPEC.md) — v1 scope, user stories, testing seams.
 
 ## Shape
 

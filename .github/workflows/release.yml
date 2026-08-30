@@ -64,6 +64,14 @@ jobs:
             exit 1
           fi
 
+      # The runner's Xcode is older than a typical dev machine's, so it builds
+      # against an older SDK. Logged because that difference is the most likely
+      # reason a build that passes locally fails here.
+      - name: Toolchain
+        run: |
+          xcodebuild -version
+          echo "macOS SDK: $(xcrun --sdk macosx --show-sdk-version)"
+
       - name: Test
         run: swift test --package-path FinelloKit
 

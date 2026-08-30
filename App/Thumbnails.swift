@@ -1,5 +1,8 @@
 import AVFoundation
-import QuickLookThumbnailing
+// @preconcurrency because QLThumbnailRepresentation is not Sendable in the
+// macOS 15 SDK, which is what CI builds against. Safe here: the representation
+// never escapes — it is turned into an NSImage on the spot.
+@preconcurrency import QuickLookThumbnailing
 import SwiftUI
 import FinelloKit
 

@@ -1,0 +1,27 @@
+# macOS
+.DS_Store
+
+# Xcode
+build/
+DerivedData/
+*.xcuserstate
+*.xcuserdatad/
+xcuserdata/
+*.moved-aside
+*.hmap
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# Swift Package Manager
+.build/
+.swiftpm/
+
+# Sparkle — the private EdDSA key must never be committed.
+# It lives in the login keychain; only the public key ships in Info.plist.
+*.private-key
+sparkle_private_key*
+
+# Release artifacts
+*.app
+*.zip

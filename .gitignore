@@ -23,5 +23,6 @@ xcuserdata/
 sparkle_private_key*
 
 # Release artifacts
+dist/
 *.app
 *.zip

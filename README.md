@@ -32,7 +32,24 @@ media · staggered per-platform dates · time of day · any publishing integrati
 
 Each was considered and cut. Check the ADRs and this list before adding one back.
 
-## Build
+## Layout
+
+- `FinelloKit/` — the model, the Store, the Library and the pure date/title
+  logic, as a Swift package. Everything testable lives here.
+- `App/` — SwiftUI views and the Sparkle wrapper. No business logic.
+- `Support/Info.plist` — bundle identity and the Sparkle feed settings.
+- `scripts/` — release and key generation. See [docs/RELEASING.md](docs/RELEASING.md).
+
+## Build and test
+
+```sh
+swift test --package-path FinelloKit                      # the whole test suite
+xcodebuild -project finello.xcodeproj -scheme finello build
+```
 
 Native SwiftUI, Swift 6, Xcode project. Deployment target macOS 15. SwiftData.
 App Sandbox off. Bundle identifier `dev.gowdy.finello`.
+
+Tests run entirely through the Store, against an in-memory container and a
+temporary Library — real persistence and real file operations, pointed
+somewhere harmless. See the Testing Decisions section of [SPEC.md](SPEC.md).

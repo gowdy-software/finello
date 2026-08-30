@@ -210,6 +210,33 @@ Everything below was considered during design and cut deliberately. Check here a
 - **App Store distribution and notarization.** Ad-hoc signing and Sparkle instead (ADR 0004).
 - **Search.** May be worth adding once she has enough Posts to need it.
 
+## Amendments since this spec was written
+
+Recorded here rather than edited silently into the text above, so the reasoning
+survives.
+
+- **Several Posts on a day render as a 2×2 grid, not a stack of offset cards.**
+  The stack hid every Post but the front one, which made them unreachable. Each
+  grid tile is its own click target and its own drag source. Beyond four, a
+  `+N` pill opens a menu listing every Post on the day.
+- **The Post editor has no separate "Add" button.** The dashed drop zone is
+  itself the button: click it to choose files, or drop onto it.
+- **Copy-from copies caption, description and hashtags**, not the caption alone.
+  The action is explicit and named after its source, so an overwrite is what she
+  asked for; copying one field of three made her redo the other two by hand.
+- **`MediaLibrary` is tested directly**, which is a second test surface the
+  Testing Decisions section said it had collapsed away. Filesystem behaviour —
+  name collisions, a deleted Library folder, cross-volume copies — is where the
+  real failures live, and asserting it only through the Store would have tested
+  it less honestly. The Store tests still drive it end to end.
+- **Story 60 is partly met.** `scripts/release.sh` makes a release one command,
+  but publishing is still a handful of printed steps rather than something a
+  tag push does on its own. Closing it fully means a CI workflow holding the
+  EdDSA signing key as a secret; that is not built.
+- **`AppModel.startupWarning` is not in any story.** It opens the window with a
+  visible warning when the on-disk store cannot be opened, instead of refusing
+  to launch on her machine with no explanation.
+
 ## Further Notes
 
 - **Her macOS version is still unconfirmed.** Targeting 15 is safe for any MacBook Air under two years old, but the real number is needed before handing over a build to test against.

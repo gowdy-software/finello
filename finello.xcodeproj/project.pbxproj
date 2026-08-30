@@ -9,11 +9,13 @@
 /* Begin PBXBuildFile section */
 		1A0000000000000000000014 /* FinelloKit in Frameworks */ = {isa = PBXBuildFile; productRef = 1A0000000000000000000012 /* FinelloKit */; };
 		1A0000000000000000000015 /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = 1A0000000000000000000013 /* Sparkle */; };
+		1A0000000000000000000019 /* finello.icns in Resources */ = {isa = PBXBuildFile; fileRef = 1A0000000000000000000018 /* finello.icns */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1A0000000000000000000005 /* finello.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = finello.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A0000000000000000000017 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1A0000000000000000000018 /* finello.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = finello.icns; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -58,6 +60,7 @@
 			isa = PBXGroup;
 			children = (
 				1A0000000000000000000017 /* Info.plist */,
+				1A0000000000000000000018 /* finello.icns */,
 			);
 			path = Support;
 			sourceTree = "<group>";
@@ -132,6 +135,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A0000000000000000000019 /* finello.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
